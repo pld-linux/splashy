@@ -15,6 +15,7 @@ BuildRequires:	DirectFB-static
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-static
+BuildRequires:	glib2-static
 BuildRequires:	libpng-static
 BuildRequires:	pkgconfig
 BuildRequires:	sysfsutils-static
