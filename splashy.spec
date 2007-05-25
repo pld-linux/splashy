@@ -17,6 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-static
 BuildRequires:	glib2-static
+BuildRequires:	libmagic-devel
 BuildRequires:	libpng-static
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
