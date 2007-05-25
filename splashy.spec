@@ -2,6 +2,7 @@
 # - init script
 # - test everything
 Summary:	Next generation boot splashing system
+Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.2
 Release:	0.1
@@ -53,28 +54,70 @@ Some of Splash's most noticable features include:
 - Fade in/out effects
 - Totally configurable
 
+%description -l pl.UTF-8
+Splashy to system ekranu startowego nowej generacji dla Linuksa. W
+przeciwieństwie do innych takich systemów nie wymaga łatania jądra i
+jest instalowany jako zwykły pakiet. Pozwala upiększyć proces
+uruchamiania systemu.
+
+Najbardziej widoczne możliwości pakietu Splashy to:
+- brak potrzeby łatania jądra, pełna funkcjonalność w przestrzeni
+  użytkownika
+- obsługa uruchamiania/wyłączania/restartowania komputera oraz wyboru
+  poziomu (runlevelu)
+- obsługa paska postępu (z opcjonalną ramką)
+- tryb szczegółowy (z obsługą klawiszy F2/ESC)
+- plik konfiguracyjny w formacie XML
+- działanie z dowolną rozdzielczością/rozmiarem trybu graficznego
+- działanie z framebufferami 8-, 16- i 24-bitowymi
+- obsługa kanału alpha (przezroczystości)
+- obsługa initramfs
+- obsługa fontów TrueType
+- obsługa wielu formatów obrazów/animacji: jpg, png, gif, mpg, swf
+- małe zależności i kod w C dla najlepszej wydajności
+- pełna obsługa LSB
+- obsługa wielu motywów
+- naprawdę łatwe tworzenie nowych motywów
+- wykrywanie X przy kończeniu pracy
+- płynne przesuwanie paska postępu
+- obsługa animacji
+- efekty fade in/fade out
+- pełna konfigurowalność
+
 %package libs
-Summary:	Libraries
+Summary:	Splashy libraries
+Summary(pl.UTF-8):	Biblioteki Splashy
 Group:		Libraries
 
 %description libs
-Libraries.
+Splashy libraries.
+
+%description libs -l pl.UTF-8
+Biblioteki Splashy.
 
 %package devel
-Summary:	Header files and develpment documentation for slplashy
+Summary:	Header files for Splashy libraries
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek Splashy
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
-Header files and develpment documentation for slplashy.
+Header files for Splashy libraries.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe bibliotek Splashy.
 
 %package static
-Summary:	Static libraries
+Summary:	Static Splashy libraries
+Summary(pl.UTF-8):	Statyczna biblioteki Splashy
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static libraries.
+Static Splashy libraries.
+
+%description static -l pl.UTF-8
+Statyczna biblioteki Splashy.
 
 %prep
 %setup -q
@@ -97,8 +140,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -114,13 +157,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/*.h
-%{_libdir}/*.la
 
 %files static
 %defattr(644,root,root,755)
