@@ -22,6 +22,7 @@ BuildRequires:	libpng-static
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
 BuildRequires:	sysfsutils-static
+Requires:	%{name}-list = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
@@ -159,14 +160,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libsplashy*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
+%attr(755,root,root) %{_libdir}/libsplashy*.so
+%{_libdir}/libsplashy*.la
+%{_includedir}/splashy*.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libsplashy*.a
