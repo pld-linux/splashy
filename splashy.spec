@@ -136,7 +136,7 @@ sed -i -e 's#-Werror##g' configure.ac
 %{__autoconf}
 %{__automake}
 %configure
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
