@@ -1,0 +1,8 @@
+--- src/libglib-2.0.la	2007-07-16 22:27:16.000000000 +0200
++++ src/libglib-2.0.la-new	2007-08-30 16:14:59.887951076 +0200
+@@ -32,4 +32,4 @@
+ dlpreopen=''
+ 
+ # Directory that this library needs to be installed in:
+-libdir='/usr/lib'
++libdir='/usr/lib64'
