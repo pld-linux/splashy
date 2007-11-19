@@ -24,6 +24,7 @@ BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
 BuildRequires:	sysfsutils-static
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	splashy-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
@@ -127,6 +128,7 @@ Statyczna biblioteki Splashy.
 Summary:	Default theme for splashy
 Group:		Themes
 Requires:	%{name} = %{version}-%{release}
+Provides:	splashy-theme
 
 %description theme-default
 Default theme for splashy
