@@ -5,7 +5,7 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.5
-Release:	2.1
+Release:	2.2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2071/%{name}_%{version}.tar.gz
@@ -170,6 +170,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/splashy
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/splashy/*.xml
 %dir %{_sysconfdir}/splashy/themes
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsplashy*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
