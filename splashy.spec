@@ -20,6 +20,7 @@ BuildRequires:	freetype-static
 BuildRequires:	glib2-static
 BuildRequires:	libmagic-devel
 BuildRequires:	libpng-static
+BuildRequires:	libtool
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
 BuildRequires:	sysfsutils-static
