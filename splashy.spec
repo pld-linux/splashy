@@ -136,12 +136,13 @@ Default theme for splashy
 %prep
 %setup -q
 %patch0 -p1
-%ifarch %{x8664}
+%if "%{_lib}" == "lib64"
 %patch1 -p0
 %endif
 sed -i -e 's#-Werror##g' configure.ac
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
