@@ -23,6 +23,7 @@ BuildRequires:	libpng-static
 BuildRequires:	libtool
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 BuildRequires:	sysfsutils-static
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	splashy-theme
@@ -127,12 +128,16 @@ Statyczna biblioteki Splashy.
 
 %package theme-default
 Summary:	Default theme for splashy
+Summary(pl.UTF-8):	Domyślny motyw dla systemu splashy
 Group:		Themes
 Requires:	%{name} = %{version}-%{release}
 Provides:	splashy-theme
 
 %description theme-default
-Default theme for splashy
+Default theme for splashy.
+
+%description theme-default -l pl.UTF-8
+Domyślny motyw dla systemu splashy.
 
 %prep
 %setup -q
