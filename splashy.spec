@@ -5,7 +5,7 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.5
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2071/%{name}_%{version}.tar.gz
