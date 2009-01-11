@@ -4,14 +4,12 @@
 Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
-Version:	0.3.5
-Release:	4
+Version:	0.3.13
+Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://alioth.debian.org/frs/download.php/2071/%{name}_%{version}.tar.gz
-# Source0-md5:	6d6f8192b5d607c2a338094afec31354
-Patch0:		%{name}-libs.patch
-Patch1:		%{name}-lib64.patch
+Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
+# Source0-md5:	03b7ee4f31c56ee61463772f74bad8a0
 URL:		http://splashy.alioth.debian.org/
 BuildRequires:	DirectFB-static
 BuildRequires:	autoconf
@@ -114,18 +112,6 @@ Header files for Splashy libraries.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek Splashy.
 
-%package static
-Summary:	Static Splashy libraries
-Summary(pl.UTF-8):	Statyczna biblioteki Splashy
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static Splashy libraries.
-
-%description static -l pl.UTF-8
-Statyczna biblioteki Splashy.
-
 %package theme-default
 Summary:	Default theme for splashy
 Summary(pl.UTF-8):	Domyślny motyw dla systemu splashy
@@ -141,10 +127,6 @@ Domyślny motyw dla systemu splashy.
 
 %prep
 %setup -q
-%patch0 -p1
-%if "%{_lib}" == "lib64"
-%patch1 -p0
-%endif
 sed -i -e 's#-Werror##g' configure.ac
 
 %build
@@ -161,13 +143,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
 %attr(755,root,root) %{_sbindir}/*
@@ -180,18 +164,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libsplashy*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libsplashy*.so.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsplashy*.so
 %{_libdir}/libsplashy*.la
 %{_includedir}/splashy*.h
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libsplashy*.a
+%{_pkgconfigdir}/*.pc
 
 %files theme-default
 %defattr(644,root,root,755)
-%{_sysconfdir}/splashy/themes/default
+%{_datadir}/splashy/themes/default
