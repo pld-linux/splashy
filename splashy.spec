@@ -11,18 +11,15 @@ Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
 # Source0-md5:	03b7ee4f31c56ee61463772f74bad8a0
 URL:		http://splashy.alioth.debian.org/
-BuildRequires:	DirectFB-static
-BuildRequires:	autoconf
+BuildRequires:	DirectFB-devel >= 0.9.22
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	freetype-static
-BuildRequires:	glib2-static
+BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libmagic-devel
-BuildRequires:	libpng-static
 BuildRequires:	libtool
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
-BuildRequires:	sysfsutils-static
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	splashy-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -164,14 +161,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libsplashy*.so.*
+%attr(755,root,root) %{_libdir}/libsplashy.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsplashy.so.1
+%attr(755,root,root) %{_libdir}/libsplashycnf.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsplashycnf.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libsplashy*.so
-%{_libdir}/libsplashy*.la
+%attr(755,root,root) %{_libdir}/libsplashy.so
+%attr(755,root,root) %{_libdir}/libsplashycnf.so
+%{_libdir}/libsplashy.la
+%{_libdir}/libsplashycnf.la
 %{_includedir}/splashy*.h
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/splashy.pc
 
 %files theme-default
 %defattr(644,root,root,755)
