@@ -14,6 +14,7 @@ URL:		http://splashy.alioth.debian.org/
 BuildRequires:	DirectFB-devel >= 0.9.22
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libmagic-devel
 BuildRequires:	libtool
@@ -130,6 +131,7 @@ sed -i -e 's#-Werror##g' configure.ac
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make} -j1
