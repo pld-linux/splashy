@@ -5,7 +5,7 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.13
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
@@ -123,6 +123,19 @@ Default theme for splashy.
 %description theme-default -l pl.UTF-8
 Domyślny motyw dla systemu splashy.
 
+%package initramfs
+Summary:	Splashy support scripts for initramfs-tools
+Summary(pl.UTF-8):	Skrypty dla initramfs-tools ze wsparciem dla systemu splashy
+Group:		Base
+Requires:	%{name} = %{version}-%{release}
+Requires:	initramfs-tools
+
+%description initramfs
+Splashy support scripts for initramfs-tools.
+
+%description initramfs -l pl.UTF-8
+Skrypty dla initramfs-tools ze wsparciem dla systemu splashy.
+
 %prep
 %setup -q
 sed -i -e 's#-Werror##g' configure.ac
@@ -154,7 +167,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
 %attr(755,root,root) %{_sbindir}/*
-%{_datadir}/initramfs-tools
 %{_datadir}/splashy
 %{_mandir}/man?/*
 %dir %{_sysconfdir}/splashy
@@ -180,3 +192,10 @@ rm -rf $RPM_BUILD_ROOT
 %files theme-default
 %defattr(644,root,root,755)
 %{_datadir}/splashy/themes/default
+
+%files initramfs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_datadir}/initramfs-tools/hooks/*
+%attr(755,root,root) %{_datadir}/initramfs-tools/scripts/init-bottom/*
+%attr(755,root,root) %{_datadir}/initramfs-tools/scripts/local-premount/*
+%{_datadir}/initramfs-tools/modules.d/*
