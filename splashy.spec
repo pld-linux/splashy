@@ -5,7 +5,7 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.13
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
@@ -110,6 +110,18 @@ Header files for Splashy libraries.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek Splashy.
 
+%package static
+Summary:	Static Splashy libraries
+Summary(pl.UTF-8):	Statyczne biblioteki Splashy
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static Splashy libraries.
+
+%description static -l pl.UTF-8
+Statyczne biblioteki Splashy.
+
 %package theme-default
 Summary:	Default theme for splashy
 Summary(pl.UTF-8):	Domyślny motyw dla systemu splashy
@@ -146,7 +158,10 @@ sed -i -e 's#-Werror##g' configure.ac
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+
+%configure \
+	--enable-static
+
 %{__make} -j1
 
 %install
@@ -188,6 +203,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libsplashycnf.la
 %{_includedir}/splashy*.h
 %{_pkgconfigdir}/splashy.pc
+
+%files static
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.a
 
 %files theme-default
 %defattr(644,root,root,755)
