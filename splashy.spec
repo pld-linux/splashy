@@ -5,11 +5,12 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.13
-Release:	6
+Release:	7
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
 # Source0-md5:	03b7ee4f31c56ee61463772f74bad8a0
+Patch0:		format-security.patch
 URL:		http://splashy.alioth.debian.org/
 BuildRequires:	DirectFB-devel >= 0.9.22
 BuildRequires:	autoconf >= 2.59
@@ -150,6 +151,7 @@ Skrypty dla initramfs-tools ze wsparciem dla systemu splashy.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i -e 's#-Werror##g' configure.ac
 
 %build

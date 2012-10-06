@@ -1,0 +1,40 @@
+--- splashy-0.3.13/src/splashy_config-functions.c.orig	2012-10-06 21:46:45.359269249 +0200
++++ splashy-0.3.13/src/splashy_config-functions.c	2012-10-06 21:47:30.952600974 +0200
+@@ -79,7 +79,7 @@
+         g_string_append (new_theme, theme_name);
+ 
+         g_print (_(">Set theme as: "));
+-        g_print (theme_name);
++        g_print ("%s", theme_name);
+         /*
+          ** Check if the theme exist
+          */
+@@ -292,7 +292,7 @@
+                 else
+                 {
+                         PRINT_FAIL;
+-                        g_print (msg_invalid_format);
++                        g_print ("%s", msg_invalid_format);
+                 }
+ 
+         }
+@@ -760,7 +760,7 @@
+                                                            SPL_THEME_CONFIG_FILE_NAME,
+                                                            NULL);
+ 
+-                g_print (NewTheme->name);
++                g_print ("%s", NewTheme->name);
+ 
+                 gint ret = RETURN_ERROR;
+                 if (gen_theme_xml (theme_file_path, NewTheme) == 0)
+--- splashy-0.3.13/src/splashy_update.c~	2008-12-24 17:14:55.000000000 +0100
++++ splashy-0.3.13/src/splashy_update.c	2012-10-06 21:48:00.789266587 +0200
+@@ -91,7 +91,7 @@
+                 if (read(sock, &buf, buf_len) < 0)
+                         ERROR_PRINT("%s",strerror(errno));
+ 
+-                printf(buf);
++                printf("%s", buf);
+         }
+ 
+         close (sock);
