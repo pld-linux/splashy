@@ -5,7 +5,7 @@ Summary:	Next generation boot splashing system
 Summary(pl.UTF-8):	System ekranu startowego nowej generacji
 Name:		splashy
 Version:	0.3.13
-Release:	8
+Release:	9
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://alioth.debian.org/frs/download.php/2691/%{name}_%{version}.tar.gz
@@ -187,6 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/splashy
 %{_mandir}/man?/*
 %dir %{_sysconfdir}/splashy
+%dir %{_sysconfdir}/splashy/themes
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/splashy/*.xml
 %dir %{_sysconfdir}/splashy/themes
 
